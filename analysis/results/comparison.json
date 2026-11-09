@@ -1,0 +1,32 @@
+[
+  {
+    "sensor_nodes": 5,
+    "packets_sent": 279,
+    "packets_received": 279,
+    "packets_lost": 0,
+    "pdr": 100.0,
+    "packet_loss_ratio": 0.0,
+    "average_delay_ms": 47.45390681003584,
+    "throughput_bps": 133.92,
+    "estimated_energy_j": 110.1500689584,
+    "estimated_network_lifetime_hours": 97.09532530310057,
+    "routing_control_packets": 84,
+    "routing_overhead_per_data_packet": 0.3010752688172043,
+    "no_route_samples": 6
+  },
+  {
+    "sensor_nodes": 10,
+    "packets_sent": 530,
+    "packets_received": 530,
+    "packets_lost": 0,
+    "pdr": 100.0,
+    "packet_loss_ratio": 0.0,
+    "average_delay_ms": 77.8089358490566,
+    "throughput_bps": 254.4,
+    "estimated_energy_j": 202.1078475936,
+    "estimated_network_lifetime_hours": 97.09447353627638,
+    "routing_control_packets": 164,
+    "routing_overhead_per_data_packet": 0.30943396226415093,
+    "no_route_samples": 40
+  }
+]

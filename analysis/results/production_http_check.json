@@ -1,0 +1,42 @@
+{
+  "/healthz": {
+    "status": 200,
+    "bytes": 15
+  },
+  "/": {
+    "status": 200,
+    "bytes": 559
+  },
+  "/api/readings": {
+    "status": 200,
+    "bytes": 139198
+  },
+  "/api/readings/latest": {
+    "status": 200,
+    "bytes": 2630
+  },
+  "/api/nodes": {
+    "status": 200,
+    "bytes": 3172
+  },
+  "/api/network/statistics": {
+    "status": 200,
+    "bytes": 1088
+  },
+  "/api/network/health": {
+    "status": 200,
+    "bytes": 179
+  },
+  "/api/dashboard": {
+    "status": 200,
+    "bytes": 5344
+  },
+  "/assets/index-Ci1ojOeh.js": {
+    "status": 200,
+    "bytes": 609588
+  },
+  "/assets/index-Ca2fEdwL.css": {
+    "status": 200,
+    "bytes": 20788
+  }
+}

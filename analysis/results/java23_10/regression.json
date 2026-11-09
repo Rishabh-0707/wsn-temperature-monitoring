@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "compared_to": "baseline_10",
+  "equal_metrics": [
+    "packets_sent",
+    "packets_received",
+    "average_delay_ms",
+    "throughput_bps",
+    "routing_control_packets",
+    "estimated_energy_j"
+  ]
+}

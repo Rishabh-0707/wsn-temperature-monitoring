@@ -1,0 +1,37 @@
+INFO  [main] [Cooja.java:1147] - Loading contiki/simulations/wsn_5_nodes.csc random seed: null
+> make COOJA_VIB_SENSOR=0 COOJA_BEEP=0 COOJA_BUTTON=0 COOJA_PIR_SENSOR=0 COOJA_CFS=0 COOJA_EEPROM=0 -j1 sink_node.cooja TARGET=cooja
+gcc: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+xcrun: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+  LD        build/cooja/sink_node.cooja
+gcc: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+xcrun: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+> make COOJA_VIB_SENSOR=0 COOJA_BEEP=0 COOJA_BUTTON=0 COOJA_PIR_SENSOR=0 COOJA_CFS=0 COOJA_EEPROM=0 -j1 temperature_sensor.cooja TARGET=cooja
+gcc: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+xcrun: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+  LD        build/cooja/temperature_sensor.cooja
+gcc: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+xcrun: warning: confstr() failed with code 5: couldn't get path of DARWIN_USER_TEMP_DIR; using /tmp instead
+INFO  [main] [LogScriptEngine.java:246] - Script timeout in 300000 ms
+INFO  [sim] [LogScriptEngine.java:338] -  5% completed,  1.2 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 10% completed,  1.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 15% completed,  0.9 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 20% completed,  0.8 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 25% completed,  0.7 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 30% completed,  0.6 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 35% completed,  0.6 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 40% completed,  0.5 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 45% completed,  0.5 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 50% completed,  0.5 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 55% completed,  0.4 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 60% completed,  0.3 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 65% completed,  0.3 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 70% completed,  0.3 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 75% completed,  0.2 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 80% completed,  0.2 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 85% completed,  0.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 90% completed,  0.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 95% completed,  0.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:312] - Timeout event @ 300000000
+INFO  [sim] [Simulation.java:450] - Runtime: 803 ms. Simulated time: 300000 ms. Speedup: 373.59900373599004
+INFO  [main] [Cooja.java:1173] - TEST OK
+

@@ -1,0 +1,3 @@
+sensor_nodes,packets_sent,packets_received,packets_lost,pdr,packet_loss_ratio,average_delay_ms,throughput_bps,estimated_energy_j,estimated_network_lifetime_hours,routing_control_packets,routing_overhead_per_data_packet,no_route_samples
+5,279,279,0,100.0,0.0,47.45390681003584,133.92,110.1500689584,97.09532530310057,84,0.3010752688172043,6
+10,530,530,0,100.0,0.0,77.8089358490566,254.4,202.1078475936,97.09447353627638,164,0.30943396226415093,40

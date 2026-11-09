@@ -1,0 +1,201 @@
+{
+  "statistics": {
+    "run_id": "604a0e9e-0416-43f1-a1c2-25091b625427",
+    "source": "cooja",
+    "run_status": "completed",
+    "total_nodes": 5,
+    "active_nodes": 5,
+    "average_temperature": 27.764,
+    "min_temperature": 27.07,
+    "max_temperature": 28.63,
+    "historical_min_temperature": 26.95,
+    "historical_max_temperature": 28.66,
+    "packets_sent": 39,
+    "packets_received": 39,
+    "packets_lost": 0,
+    "pdr": 100.0,
+    "packet_loss_ratio": 0.0,
+    "transmission_attempts": 39,
+    "retry_attempts": 0,
+    "duplicate_receptions": 0,
+    "unmatched_receptions": 0,
+    "generated_samples": 45,
+    "no_route_samples": 6,
+    "failed_ack_samples": 0,
+    "sequence_gaps": 6,
+    "average_delay_ms": 44.728,
+    "delay_sample_count": 39,
+    "duration_s": 60,
+    "throughput_bps": 93.6,
+    "routing_control_packets": 51,
+    "routing_overhead_per_data_packet": 1.3076923076923077,
+    "estimated_energy_j": 21.178488014400003,
+    "estimated_network_lifetime_hours": 97.09501638072764,
+    "energy_model": {
+      "voltage_v": 3.0,
+      "cpu_ma": 1.8,
+      "lpm_ma": 0.005,
+      "deep_lpm_ma": 0.001,
+      "transmit_ma": 17.4,
+      "listen_ma": 18.8,
+      "battery_mah": 2000,
+      "label": "Illustrative MCU + radio model; not board calibration"
+    },
+    "metric_basis": "measured TX/RX events",
+    "health": "healthy"
+  },
+  "nodes": [
+    {
+      "node_id": 1,
+      "temperature": 28.63,
+      "last_received": "2026-11-09T16:41:50.429420+00:00",
+      "status": "active",
+      "packets_sent": 9,
+      "packets_received": 9,
+      "packets_lost": 0,
+      "sequence_gaps": 0,
+      "pdr": 100.0,
+      "parent_mote_id": 1,
+      "rank": 277,
+      "energy_j": 3.625836465600001,
+      "energy_observed_seconds": 58.676,
+      "lifetime_hours": 97.09649162065617
+    },
+    {
+      "node_id": 2,
+      "temperature": 27.07,
+      "last_received": "2026-11-09T16:41:48.401420+00:00",
+      "status": "active",
+      "packets_sent": 9,
+      "packets_received": 9,
+      "packets_lost": 0,
+      "sequence_gaps": 0,
+      "pdr": 100.0,
+      "parent_mote_id": 1,
+      "rank": 256,
+      "energy_j": 3.4985742576,
+      "energy_observed_seconds": 56.633,
+      "lifetime_hours": 97.12470708942429
+    },
+    {
+      "node_id": 3,
+      "temperature": 27.32,
+      "last_received": "2026-11-09T16:41:50.658708+00:00",
+      "status": "active",
+      "packets_sent": 8,
+      "packets_received": 8,
+      "packets_lost": 0,
+      "sequence_gaps": 1,
+      "pdr": 100.0,
+      "parent_mote_id": 3,
+      "rank": 427,
+      "energy_j": 3.6381967680000007,
+      "energy_observed_seconds": 58.876,
+      "lifetime_hours": 97.0964525907687
+    },
+    {
+      "node_id": 4,
+      "temperature": 27.45,
+      "last_received": "2026-11-09T16:41:48.526708+00:00",
+      "status": "active",
+      "packets_sent": 8,
+      "packets_received": 8,
+      "packets_lost": 0,
+      "sequence_gaps": 1,
+      "pdr": 100.0,
+      "parent_mote_id": 3,
+      "rank": 405,
+      "energy_j": 3.5074246463999996,
+      "energy_observed_seconds": 56.764,
+      "lifetime_hours": 97.10372547834305
+    },
+    {
+      "node_id": 5,
+      "temperature": 28.35,
+      "last_received": "2026-11-09T16:41:48.623708+00:00",
+      "status": "active",
+      "packets_sent": 5,
+      "packets_received": 5,
+      "packets_lost": 0,
+      "sequence_gaps": 4,
+      "pdr": 100.0,
+      "parent_mote_id": 5,
+      "rank": 616,
+      "energy_j": 3.5103964416,
+      "energy_observed_seconds": 56.807,
+      "lifetime_hours": 97.09501638072764
+    }
+  ],
+  "experiment": {
+    "nodes": 5,
+    "duration_s": 60,
+    "radio_range_m": 50,
+    "seed": 123456,
+    "success_ratio_tx": 1,
+    "speed_limit": 1.0,
+    "topology": [
+      {
+        "mote_id": 1,
+        "node_id": 0,
+        "x": 0,
+        "y": 0
+      },
+      {
+        "mote_id": 2,
+        "node_id": 1,
+        "x": 35,
+        "y": 0
+      },
+      {
+        "mote_id": 3,
+        "node_id": 2,
+        "x": 35,
+        "y": 25
+      },
+      {
+        "mote_id": 4,
+        "node_id": 3,
+        "x": 70,
+        "y": 0
+      },
+      {
+        "mote_id": 5,
+        "node_id": 4,
+        "x": 70,
+        "y": 25
+      },
+      {
+        "mote_id": 6,
+        "node_id": 5,
+        "x": 105,
+        "y": 0
+      }
+    ],
+    "run_id": "604a0e9e-0416-43f1-a1c2-25091b625427",
+    "started_at": "2026-11-09T16:40:51.733500+00:00",
+    "source": "cooja",
+    "name": "Cooja \u00b7 5 sensors \u00b7 60 s",
+    "telemetry_complete": true,
+    "contiki_commit": "735e87c3e5060e9c427b214e55c372967f595c04",
+    "cooja_commit": "be0f8d813271898c6b1cb7cfaec1f692e319a2ec",
+    "cooja_jar_sha256": "37ffe125b81c332b0e88f7e402c886591f119a72331501d682a5cf78286b0357",
+    "java_version": "openjdk version \"23.0.2\" 2025-01-21",
+    "source_sha256": {
+      "contiki/temperature-sensor/sensor.h": "6a5b7bbfad1ff3ee558ecab0e127187e6c4a9bab6ffbe5280e234e9fabb42a52",
+      "contiki/temperature-sensor/temperature_sensor.c": "d08e83999fdc15bb9a1c1300c1021b6279374c044bb512bfc769dfc668bd4503",
+      "contiki/temperature-sensor/project-conf.h": "8338b137bb87071424f9d22985ea461a23a1b3065eb3b5449544c62c6558520e",
+      "contiki/common/protocol.h": "eafab29d58db2723105d410086e341cd9c2fe9d5edcba715438b0b6fe30a0260",
+      "contiki/common/project-conf.h": "5f45234e547f8176e0cffc61ce931721cfe460550be4b942a6329469cb129222",
+      "contiki/common/telemetry.h": "991ef6087fa962ffed1a69c21db60fb5fbdf34caf730f1ef3d34447d4335c010",
+      "contiki/sink-node/sink_node.c": "f9ad462cb316c9087d533514d7fa7054009e45e6f8919c038187f986241adb93",
+      "contiki/sink-node/project-conf.h": "8338b137bb87071424f9d22985ea461a23a1b3065eb3b5449544c62c6558520e"
+    },
+    "status": "completed",
+    "validation": {
+      "type": "end",
+      "sim_time_us": 60000000,
+      "received_nodes": 5,
+      "multihop": true
+    }
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "nodes": 10,
+  "duration_s": 300,
+  "radio_range_m": 50,
+  "seed": 123456,
+  "success_ratio_tx": 1,
+  "topology": [
+    {
+      "mote_id": 1,
+      "node_id": 0,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "mote_id": 2,
+      "node_id": 1,
+      "x": 35,
+      "y": 0
+    },
+    {
+      "mote_id": 3,
+      "node_id": 2,
+      "x": 35,
+      "y": 25
+    },
+    {
+      "mote_id": 4,
+      "node_id": 3,
+      "x": 70,
+      "y": 0
+    },
+    {
+      "mote_id": 5,
+      "node_id": 4,
+      "x": 70,
+      "y": 25
+    },
+    {
+      "mote_id": 6,
+      "node_id": 5,
+      "x": 105,
+      "y": 0
+    },
+    {
+      "mote_id": 7,
+      "node_id": 6,
+      "x": 105,
+      "y": 25
+    },
+    {
+      "mote_id": 8,
+      "node_id": 7,
+      "x": 140,
+      "y": 0
+    },
+    {
+      "mote_id": 9,
+      "node_id": 8,
+      "x": 140,
+      "y": 25
+    },
+    {
+      "mote_id": 10,
+      "node_id": 9,
+      "x": 175,
+      "y": 0
+    },
+    {
+      "mote_id": 11,
+      "node_id": 10,
+      "x": 175,
+      "y": 25
+    }
+  ],
+  "run_id": "cc83330b-dc48-491b-b31b-e44a75578a99",
+  "started_at": "2026-11-09T16:35:23.283219+00:00",
+  "source": "cooja",
+  "name": "Cooja \u00b7 10 sensors",
+  "telemetry_complete": true,
+  "contiki_commit": "735e87c3e5060e9c427b214e55c372967f595c04",
+  "cooja_commit": "be0f8d813271898c6b1cb7cfaec1f692e319a2ec"
+}
