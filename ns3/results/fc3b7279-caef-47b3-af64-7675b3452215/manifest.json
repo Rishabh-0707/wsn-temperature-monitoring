@@ -1,0 +1,70 @@
+{
+  "run_id": "fc3b7279-caef-47b3-af64-7675b3452215",
+  "name": "NS-3 \u00b7 5 sensors \u00b7 star",
+  "source": "ns3",
+  "simulator": "ns3",
+  "started_at": "2026-11-10T03:21:47.462172+00:00",
+  "duration_s": 300,
+  "nodes": 5,
+  "telemetry_complete": true,
+  "configuration": {
+    "nodes": 5,
+    "topology": "star",
+    "duration_s": 300,
+    "interval_s": 5.0,
+    "radio_range_m": 50.0,
+    "seed": 123456,
+    "payload_bytes": 18,
+    "radio_model": "RangePropagationLossModel",
+    "routing_mode": "static-ipv6-bfs",
+    "loss_probability": 0.0,
+    "temperature_min_c": 20.0,
+    "temperature_max_c": 35.0,
+    "ack_timeout_s": 1.0,
+    "max_attempts": 3,
+    "realtime": false
+  },
+  "topology": [
+    {
+      "node_id": 0,
+      "mote_id": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "node_id": 1,
+      "mote_id": 2,
+      "x": 9.270509831248424,
+      "y": 28.531695488854606
+    },
+    {
+      "node_id": 2,
+      "mote_id": 3,
+      "x": -24.27050983124842,
+      "y": 17.633557568774197
+    },
+    {
+      "node_id": 3,
+      "mote_id": 4,
+      "x": -24.270509831248425,
+      "y": -17.63355756877419
+    },
+    {
+      "node_id": 4,
+      "mote_id": 5,
+      "x": 9.270509831248416,
+      "y": -28.53169548885461
+    },
+    {
+      "node_id": 5,
+      "mote_id": 6,
+      "x": 30.0,
+      "y": -7.34788079488412e-15
+    }
+  ],
+  "radio_range_m": 50.0,
+  "simulator_version": "3.46",
+  "routing_protocol": "IPv6 static BFS routes (not RPL)",
+  "wireless_model": "LR-WPAN / SixLoWPAN / IPv6 / UDP; range propagation",
+  "managed_ns3": true
+}

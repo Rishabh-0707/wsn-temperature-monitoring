@@ -14,10 +14,12 @@ def summarize(run, events, readings, now=None, energy_model=None):
     model = dict(ENERGY_MODEL, **(energy_model or {}))
     events = sorted(events, key=lambda e: e["sim_time_us"])
     tx, rx, statuses, energies = {}, {}, {}, {}
+    received_hops = {}
     counts = defaultdict(int)
     for e in events:
         counts[e["type"]] += 1
         if e["type"] == "tx": tx.setdefault(key(e), e)
+        if e["type"] == "rx" and e.get("hop_count") is not None: received_hops.setdefault(key(e), e["hop_count"])
         if e["type"] == "status": statuses[e["node_id"]] = e
         if e["type"] == "energy": energies[(e["node_id"], e.get("boot_id", 0))] = e
     for r in sorted(readings, key=lambda r: r["timestamp"]): rx.setdefault(key(r), r)
@@ -46,7 +48,7 @@ def summarize(run, events, readings, now=None, energy_model=None):
         for r in history: boots[r["boot_id"]].add(r["sequence_number"])
         gaps = sum(max(seqs) - len(seqs) for seqs in boots.values())
         last = latest.get(node)
-        if last and run["source"] == "cooja" and last["sim_time_us"] is not None:
+        if last and run["source"] in ("cooja", "ns3") and last["sim_time_us"] is not None:
             age = max(0, (duration * 1e6 - last["sim_time_us"]) / 1e6)
         elif last:
             age = max(0, (now - datetime.fromisoformat(last["received_at"])).total_seconds())
@@ -66,7 +68,8 @@ def summarize(run, events, readings, now=None, energy_model=None):
                       "pdr": 100 * sum(k[0] == node for k in delivered) / sent if measured and sent else None,
                       "parent_mote_id": statuses.get(node, {}).get("parent_mote_id"),
                       "rank": statuses.get(node, {}).get("rank"), "energy_j": energy,
-                      "energy_observed_seconds": seconds, "lifetime_hours": lifetime})
+                      "energy_observed_seconds": seconds, "lifetime_hours": lifetime,
+                      "remaining_energy_j": max(0,model["battery_mah"]/1000*model["voltage_v"]*3600-energy) if energy is not None else None})
     temps = [r["temperature"] for r in latest.values()]
     pdr = 100 * len(delivered) / len(tx) if measured and tx else None
     active = sum(n["status"] == "active" for n in nodes)
@@ -83,6 +86,8 @@ def summarize(run, events, readings, now=None, energy_model=None):
              "retry_attempts": counts["tx"] - len(tx) if measured else None,
              "duplicate_receptions": max(0, counts["rx"] - len(rx)),
              "unmatched_receptions": len(rx.keys() - tx.keys()),
+             "average_hop_count": mean(received_hops.values()) if received_hops else None,
+             "sampling_success_ratio": 100*len(rx)/counts["sample"] if counts["sample"] else None,
              "generated_samples": counts["sample"] if measured else None,
              "no_route_samples": counts["no_route"] if measured else None,
              "failed_ack_samples": counts["failed"] if measured else None,

@@ -1,0 +1,25 @@
+{
+  "observed_date": "2026-11-10",
+  "mobile_width": 390,
+  "document_width": 390,
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "engine_switches": [
+    "cooja",
+    "ns3",
+    "cooja",
+    "ns3"
+  ],
+  "comparison_graphs": true,
+  "live_launch": true,
+  "live_readings_before_cancel": 28,
+  "stop_terminal_status": "cancelled",
+  "browser_csv_rows": 1127,
+  "console_errors": [],
+  "screenshots": [
+    "docs/figures/ns3-mobile.png",
+    "docs/figures/ns3-dashboard.png"
+  ]
+}

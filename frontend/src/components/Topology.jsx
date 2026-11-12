@@ -1,11 +1,14 @@
 import { Radio } from "lucide-react";
-export default function Topology({ run, nodes, selected, onSelect }) {
+export default function Topology({ run, nodes, selected, onSelect, events = [] }) {
   const positions = run.metadata.topology || [];
   const lookup = Object.fromEntries(positions.map((p) => [p.mote_id, p]));
-  const maxX = Math.max(100, ...positions.map((p) => p.x));
+  const minX = Math.min(0, ...positions.map(p=>p.x));
+  const maxX = Math.max(100, ...positions.map(p=>p.x));
+  const minY = Math.min(0, ...positions.map(p=>p.y));
+  const maxY = Math.max(25, ...positions.map(p=>p.y));
   const point = (p) => ({
-    x: 35 + (p.x / maxX) * 355,
-    y: p.mote_id === 1 ? 112 : 65 + p.y * 3.8,
+    x: run.source === "ns3" ? 35 + ((p.x-minX) / (maxX-minX)) * 355 : 35 + (p.x/maxX)*355,
+    y: run.source === "ns3" ? 45 + ((p.y-minY) / (maxY-minY))*105 : p.mote_id === 1 ? 112 : 65+p.y*3.8,
   });
   if (!positions.length)
     return (
@@ -13,12 +16,14 @@ export default function Topology({ run, nodes, selected, onSelect }) {
         Topology is unavailable for direct sensor ingestion.
       </div>
     );
+  const recent = [...events].reverse().find(e => e.type === "rx" && e.path?.length > 1);
+  const trail = recent?.path.map(id=>lookup[id+1]).filter(Boolean).map(p=>{const c=point(p);return `${c.x},${c.y}`;}).join(" ");
   return (
     <div className="topology-wrap">
       <svg
         viewBox="0 0 430 225"
         role="img"
-        aria-label="Observed RPL parent links and node positions"
+        aria-label="Network routes and node positions"
       >
         <defs>
           <pattern
@@ -51,6 +56,8 @@ export default function Topology({ run, nodes, selected, onSelect }) {
             />
           );
         })}
+        {trail && <polyline key={recent.event_id} points={trail} fill="none" stroke="var(--accent)" strokeWidth="3" opacity=".7"><title>Recorded path for node {recent.node_id}, packet {recent.sequence_number}</title>{run.status === "running" && <animate attributeName="opacity" values="1;.25;1" dur="1s" repeatCount="2"/>}</polyline>}
+        {trail && run.status === "running" && <circle key={`packet-${recent.event_id}`} r="4" fill="var(--text)"><title>Playback of recorded packet path, slowed for visibility</title><animateMotion path={`M ${trail.replaceAll(" ", " L ")}`} dur="1.5s" repeatCount="1" fill="freeze"/></circle>}
         {positions.map((p) => {
           const c = point(p),
             n = nodes.find((n) => n.node_id === p.node_id),
@@ -121,6 +128,7 @@ export default function Topology({ run, nodes, selected, onSelect }) {
           );
         })}
       </svg>
+      {recent && <p style={{fontSize:12,padding:"0 12px"}}>Latest recorded packet: node {recent.node_id}, sequence {recent.sequence_number}, path {recent.path.join(" → ")}, {(recent.sim_time_us/1e6).toFixed(2)} s.</p>}
       <div className="topology-key">
         <span>
           <i className="dot" />
@@ -132,7 +140,7 @@ export default function Topology({ run, nodes, selected, onSelect }) {
         </span>
         <span>
           <Radio size={12} />
-          RPL-Lite
+          {run.source === "ns3" ? "Static IPv6 routes" : "RPL-Lite"}
         </span>
       </div>
     </div>

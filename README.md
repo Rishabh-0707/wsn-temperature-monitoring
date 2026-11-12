@@ -1,8 +1,19 @@
 # Wireless Sensor Network with Real-Time Temperature Monitoring and Network Performance Analysis
 
-An executable Contiki-NG/Cooja research project with 18-byte UDP sensor messages, RPL-Lite multi-hop routing, acknowledged retries, a FastAPI/SQLite telemetry backend, and a React observatory. All included performance results come from actual Cooja runs. Temperatures are simulated in the C firmware; the network is executed by Cooja.
+One WSN monitoring platform with **Contiki-NG/Cooja and NS-3** simulation engines, the same 18-byte UDP sensor payload, acknowledged retries, FastAPI/SQLite telemetry, and a shared React observatory. Original Cooja results remain unchanged under `analysis/results/`; actual NS-3 recordings live separately under `ns3/results/`. Cooja uses RPL-Lite; NS-3 uses documented static IPv6 next-hop routes, not RPL.
 
-![Dashboard showing the recorded ten-sensor experiment](docs/figures/dashboard-overview.jpg)
+![Shared dashboard showing the recorded twenty-sensor NS-3 experiment](docs/figures/ns3-dashboard.png)
+
+## Verified dual-simulator platform
+
+Latest verification: **12 November 2026**. Both engines use the same experiment store, monitoring dashboard, CSV exports and comparison views.
+
+- **15 automated Python tests passed**, including all eight original tests; both C and NS-3 18-byte wire-format tests passed.
+- **Eight actual NS-3 experiments completed**, covering 5/10/20 sensors, sampling intervals, receive loss, range and seeds. The 20-sensor run received 1,127 unique packets with 5.506 average observed hops.
+- A fresh **Cooja multi-hop regression passed** with 39/39 packets and was ingested into the same backend. All original Cooja experiment rows and baseline files remain unchanged.
+- Browser checks covered engine switching, live launch/stop, recorded packet paths, comparison graphs, CSV export, both themes and a 390 px mobile layout.
+
+See [verification evidence](ns3/results/verification/), [NS-3 results](docs/ns3_experimental_results.md), and [comparison methodology](docs/cooja_vs_ns3_comparison.md).
 
 ## Open the project
 
@@ -22,9 +33,12 @@ The repository includes source, dependency lockfiles, documentation, and actual 
 ```bash
 .venv/bin/python scripts/bridge.py analysis/results/baseline_5/COOJA.testlog
 .venv/bin/python scripts/bridge.py analysis/results/baseline_10/COOJA.testlog
+
+# Load the recorded ten-sensor NS-3 baseline for dashboard comparison.
+.venv/bin/python scripts/ns3_bridge.py ns3/results/6d0cc334-5678-4259-946a-c5de36ea7e7f
 ```
 
-Viewing these recorded results does not require a Contiki-NG installation. To execute new simulations, first install the pinned Contiki-NG/Cooja toolchain described in [implementation](docs/implementation.md), then select it:
+Viewing recorded Cooja or NS-3 results requires neither simulator installation. To execute new Cooja simulations, first install the pinned Contiki-NG/Cooja toolchain described in [implementation](docs/implementation.md), then select it:
 
 ```bash
 export CONTIKI="$HOME/contiki-ng"
@@ -48,7 +62,7 @@ bash scripts/run_live.sh 5 300
 
 The dashboard polls every two seconds. Fast headless experiments can finish before one UI refresh; real-time mode deliberately takes the configured wall time. Completed runs remain selectable and are clearly marked historical. Node availability in a completed run is evaluated at simulation end.
 
-## Results actually obtained
+## Original Cooja results
 
 Both baseline configurations passed Cooja's all-sensors and multi-hop checks, plus an independent log/topology validator.
 
@@ -128,3 +142,31 @@ cc -std=c99 -Wall -Wextra -Werror tests/protocol_test.c -o .runtime/protocol_tes
 Firmware compilation is part of every Cooja launch. Separate compilation commands are in [implementation](docs/implementation.md). Current executed evidence and remaining platform limitations are recorded in [PROJECT_STATUS.md](PROJECT_STATUS.md).
 
 Read the [complete project report](docs/project_report.md), [results discussion](docs/experimental_results.md), and [architecture](docs/architecture.md). No physical hardware, calibrated electrical measurements, or public deployment is claimed. The default API is a local research service and has no authentication; keep it on loopback unless you add deployment access controls.
+
+## NS-3 alongside Cooja
+
+The existing startup command remains `bash scripts/start_project.sh`. In the dashboard, use **Simulator** and **Experiment** to load either engine, and expand **Simulation engines & comparison** to configure, run or stop NS-3 and compare an explicit pair of recordings. Temperatures, topology, recorded packet paths, metrics, history and CSV exports use the same backend and database.
+
+```text
+Cooja + Contiki RPL ── existing bridge ─┐
+                                      ├─ FastAPI ─ SQLite ─ existing React dashboard
+NS-3 LR-WPAN/IPv6 ── JSONL adapter ────┘
+```
+
+For a fresh NS-3 installation, inspect existing installations first, then run `bash scripts/setup_ns3.sh`. Reuse a source checkout by setting `NS3_HOME`. The pinned release is 3.46 and requires a C++23 compiler, CMake >=3.20 and Ninja; this host was tested with Apple Clang 21, CMake 4.4.4 and Ninja 1.13.2. The setup uses official source and does not alter Contiki. See [host environment](docs/ns3_environment.md) for the already-installed runtime paths and build command.
+
+With the shared backend running:
+
+```bash
+bash scripts/run_ns3_experiment.sh 5
+bash scripts/run_ns3_experiment.sh 10 --topology ladder --duration 300 --fast
+bash scripts/run_ns3_experiment.sh 20 --topology ladder --interval 2 --seed 42 --fast
+```
+
+Configuration includes node count, star/ladder topology, duration, interval, range, seed, UDP receive-discard probability, ACK timeout/attempts and optional real-time pacing. The binary payload is intentionally fixed to 18 bytes. Radio and routing modes are explicitly constrained to the implemented models; unsupported API values are rejected. New runs receive UUIDs.
+
+Run `python scripts/ns3_matrix.py` with the project interpreter for eight distinct experiments; use `python scripts/validate_ns3_results.py` for independent result checks. `python scripts/ns3_bridge.py ns3/results/<UUID>` restores a completed recording idempotently. Each recording includes manifest/configuration, version and build hashes, JSONL events, NetAnim XML and execution status; analysis adds CSV and PNG/SVG plots. `bash scripts/open_netanim.sh ns3/results/<UUID>/animation.xml` opens the optional GUI when installed. The dashboard topology is independent of NetAnim.
+
+Limits: NS-3 routing is static BFS IPv6 routing, not RPL or dynamic repair. Optional loss is UDP receive discard after actual wireless delivery, not a PHY error model. Energy/lifetime are current-draw estimates; Cooja and NS-3 radio/MAC/timing/energy differences prevent an equivalence claim. NetAnim XML was validated, but GUI playback was unavailable on this host. The local process manager supports one backend process and one NS-3 job at a time; it is not a public authenticated compute service.
+
+Read the [integration plan](docs/ns3_integration_plan.md), [architecture](docs/ns3_architecture.md), [implementation](docs/ns3_implementation.md), [actual NS-3 results](docs/ns3_experimental_results.md), and [Cooja/NS-3 comparison](docs/cooja_vs_ns3_comparison.md).

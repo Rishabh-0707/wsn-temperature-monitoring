@@ -7,6 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from .database import initialize
 from .routes import router
+from .ns3_jobs import Jobs, router as ns3_router
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(name)s: %(message)s")
 
@@ -14,12 +15,17 @@ def create_app(db_path=None):
     @asynccontextmanager
     async def lifespan(app):
         initialize(app.state.db_path)
-        yield
+        app.state.ns3_jobs = Jobs(app)
+        try:
+            yield
+        finally:
+            app.state.ns3_jobs.close()
     app = FastAPI(title="WSN Temperature Monitoring", version="1.0.0", lifespan=lifespan)
     app.state.db_path = db_path
     origins = os.environ.get("WSN_CORS_ORIGINS", "http://127.0.0.1:5173,http://localhost:5173").split(",")
     app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET", "POST"], allow_headers=["Content-Type"])
     app.include_router(router)
+    app.include_router(ns3_router)
     @app.get("/healthz")
     def healthz():
         return {"status": "ok"}

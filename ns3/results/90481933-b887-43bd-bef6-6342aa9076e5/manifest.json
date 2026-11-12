@@ -1,0 +1,84 @@
+{
+  "run_id": "90481933-b887-43bd-bef6-6342aa9076e5",
+  "name": "NS-3 \u00b7 5 sensors \u00b7 star",
+  "source": "ns3",
+  "simulator": "ns3",
+  "started_at": "2026-11-10T03:58:00.328058+00:00",
+  "duration_s": 60,
+  "nodes": 5,
+  "telemetry_complete": true,
+  "configuration": {
+    "nodes": 5,
+    "topology": "star",
+    "duration_s": 60,
+    "interval_s": 5.0,
+    "radio_range_m": 50.0,
+    "seed": 123456,
+    "payload_bytes": 18,
+    "radio_model": "RangePropagationLossModel",
+    "routing_mode": "static-ipv6-bfs",
+    "loss_model": "udp-receive-discard",
+    "loss_probability": 0.0,
+    "temperature_min_c": 20,
+    "temperature_max_c": 35,
+    "ack_timeout_s": 1.0,
+    "max_attempts": 3,
+    "realtime": true
+  },
+  "topology": [
+    {
+      "node_id": 0,
+      "mote_id": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "node_id": 1,
+      "mote_id": 2,
+      "x": 9.270509831248424,
+      "y": 28.531695488854606
+    },
+    {
+      "node_id": 2,
+      "mote_id": 3,
+      "x": -24.27050983124842,
+      "y": 17.633557568774197
+    },
+    {
+      "node_id": 3,
+      "mote_id": 4,
+      "x": -24.270509831248425,
+      "y": -17.63355756877419
+    },
+    {
+      "node_id": 4,
+      "mote_id": 5,
+      "x": 9.270509831248416,
+      "y": -28.53169548885461
+    },
+    {
+      "node_id": 5,
+      "mote_id": 6,
+      "x": 30.0,
+      "y": -7.34788079488412e-15
+    }
+  ],
+  "radio_range_m": 50.0,
+  "simulator_version": "3.46",
+  "routing_protocol": "IPv6 static BFS routes (not RPL)",
+  "wireless_model": "LR-WPAN / SixLoWPAN / IPv6 / UDP; range propagation",
+  "managed_ns3": true,
+  "binary_sha256": "2712737dc9c5818c58ded45ce37ce08def32486b9fdd37af9415aa01aacc4bdd",
+  "source_sha256": {
+    "ns3/tests/header-test.cc": "7b67b4a35f0775ec0ac2e321a36a64ad94adabe3cdf72df166ad64ac8c9b1ff1",
+    "ns3/scratch/wsn-temperature.cc": "b7ae69fd3e991a998f169edcaa0e62bb96cb27b01f9322f8bbbdc3d6c93b6ba1",
+    "ns3/src/network-forwarder.cc": "1e7f2b4162073f853252585a833fb3a8ca0067c1b32e14ed096d0e45f3e4b7ec",
+    "ns3/src/sensor-application.cc": "ea88424a042ffa8e44ae8feeb00bcbd33854b02150577b0998647d6ecc69f110",
+    "ns3/src/temperature-header.cc": "a0fbc85a359d4500bb0e0e688837b1524570fab2eb6c679d29849f4b49738c76",
+    "ns3/src/sink-application.cc": "ac210397395efad90728c0de8bffe859d9bd7be4be8a9b6650d60d8a16fbd53b",
+    "ns3/src/telemetry.cc": "ac7567422bc1bcb50ecb60cf3f6904fa282a158bb2490d2ebea364af164266c4",
+    "ns3/src/simulation.cc": "7f02f0380158f3b7f7bae0644bd1c4afe9b9bb63b1db8de03ea04687cf3157a9",
+    "ns3/src/simulation-state.h": "f606ff813e5ddcfc5744cca568c521539456211edc93f10cac132338c6beaa2f",
+    "ns3/src/temperature-header.h": "5f70821e41b1edce181858cbea55a12d22752538de6f64f2c669956ab9d456f5"
+  }
+}

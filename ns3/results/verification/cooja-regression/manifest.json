@@ -1,0 +1,65 @@
+{
+  "nodes": 5,
+  "duration_s": 60,
+  "radio_range_m": 50,
+  "seed": 123456,
+  "success_ratio_tx": 1,
+  "speed_limit": 1.0,
+  "topology": [
+    {
+      "mote_id": 1,
+      "node_id": 0,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "mote_id": 2,
+      "node_id": 1,
+      "x": 35,
+      "y": 0
+    },
+    {
+      "mote_id": 3,
+      "node_id": 2,
+      "x": 35,
+      "y": 25
+    },
+    {
+      "mote_id": 4,
+      "node_id": 3,
+      "x": 70,
+      "y": 0
+    },
+    {
+      "mote_id": 5,
+      "node_id": 4,
+      "x": 70,
+      "y": 25
+    },
+    {
+      "mote_id": 6,
+      "node_id": 5,
+      "x": 105,
+      "y": 0
+    }
+  ],
+  "run_id": "acbdaa34-e0e5-4ea3-a342-5c221384557c",
+  "started_at": "2026-11-12T17:44:08.647906+00:00",
+  "source": "cooja",
+  "name": "Cooja \u00b7 5 sensors \u00b7 60 s",
+  "telemetry_complete": true,
+  "contiki_commit": "735e87c3e5060e9c427b214e55c372967f595c04",
+  "cooja_commit": "be0f8d813271898c6b1cb7cfaec1f692e319a2ec",
+  "cooja_jar_sha256": "37ffe125b81c332b0e88f7e402c886591f119a72331501d682a5cf78286b0357",
+  "java_version": "openjdk version \"23.0.2\" 2025-01-21",
+  "source_sha256": {
+    "contiki/temperature-sensor/sensor.h": "6a5b7bbfad1ff3ee558ecab0e127187e6c4a9bab6ffbe5280e234e9fabb42a52",
+    "contiki/temperature-sensor/temperature_sensor.c": "d08e83999fdc15bb9a1c1300c1021b6279374c044bb512bfc769dfc668bd4503",
+    "contiki/temperature-sensor/project-conf.h": "8338b137bb87071424f9d22985ea461a23a1b3065eb3b5449544c62c6558520e",
+    "contiki/common/protocol.h": "eafab29d58db2723105d410086e341cd9c2fe9d5edcba715438b0b6fe30a0260",
+    "contiki/common/project-conf.h": "5f45234e547f8176e0cffc61ce931721cfe460550be4b942a6329469cb129222",
+    "contiki/common/telemetry.h": "991ef6087fa962ffed1a69c21db60fb5fbdf34caf730f1ef3d34447d4335c010",
+    "contiki/sink-node/sink_node.c": "f9ad462cb316c9087d533514d7fa7054009e45e6f8919c038187f986241adb93",
+    "contiki/sink-node/project-conf.h": "8338b137bb87071424f9d22985ea461a23a1b3065eb3b5449544c62c6558520e"
+  }
+}

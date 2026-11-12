@@ -1,0 +1,5 @@
+{
+  "status": "failed",
+  "error": "Simulator ended without a valid completion event",
+  "returncode": -6
+}

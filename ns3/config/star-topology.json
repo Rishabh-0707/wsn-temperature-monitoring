@@ -1,0 +1,14 @@
+{
+  "nodes": 5,
+  "topology": "star",
+  "duration_s": 300,
+  "interval_s": 5,
+  "radio_range_m": 50,
+  "seed": 123456,
+  "payload_bytes": 18,
+  "radio_model": "RangePropagationLossModel",
+  "routing_mode": "static-ipv6-bfs",
+  "loss_model": "udp-receive-discard",
+  "loss_probability": 0,
+  "realtime": true
+}

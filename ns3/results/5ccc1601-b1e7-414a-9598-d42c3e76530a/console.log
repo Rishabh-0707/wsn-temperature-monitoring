@@ -1,0 +1,3 @@
+NS_ASSERT failed, cond="m_ptr", msg="Attempted to dereference zero pointer", +142.159168818s 5 file=/private/tmp/wsn-ns3-build-source/src/core/model/ptr.h, line=712
+NS_FATAL, terminating
+libc++abi: terminating

@@ -1,0 +1,3 @@
+NS_ASSERT failed, cond="cur->tid != tag.GetInstanceTypeId()", msg="Error: cannot add the same kind of tag twice. The tag type is ns3::SocketIpv6HopLimitTag", +15.558582659s 0 file=/private/tmp/wsn-ns3-build-source/src/network/model/packet-tag-list.cc, line=259
+NS_FATAL, terminating
+libc++abi: terminating

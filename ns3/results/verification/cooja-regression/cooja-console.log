@@ -1,0 +1,259 @@
+INFO  [main] [Cooja.java:1147] - Loading contiki/simulations/wsn_5_nodes_live.csc random seed: null
+> make COOJA_VIB_SENSOR=0 COOJA_BEEP=0 COOJA_BUTTON=0 COOJA_PIR_SENSOR=0 COOJA_CFS=0 COOJA_EEPROM=0 -j1 sink_node.cooja TARGET=cooja
+  MKDIR     build/cooja/obj/.deps
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/cooja_mt.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./rtimer-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/watchdog.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./int-master.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/beep.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/ip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/leds-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/moteid.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/pir-sensor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/rs232.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/vib-sensor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/clock.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/cooja-log.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/cfs/cfs-cooja.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/cooja-radio.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/eeprom.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./slip-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./platform.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./mtype.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/random.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sensors.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/leds.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/gpio-hal-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/buttons.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/button-hal.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/gpio-hal.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/nullradio.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/serial-line.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/slip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/aes-128.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/assert.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/bitrev.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/cbor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ccm-star.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/circular-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/crc16.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/csprng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/dbl-circ-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/dbl-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ecc-curve.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/heapmem.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/hexconv.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ifft.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/iq-seeder.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/memb.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ringbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ringbufindex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sfc16-prng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sfc32-prng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sha-256.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/trickle-timer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/link-stats.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/linkaddr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/nbr-table.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/net-debug.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/netstack.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/packetbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/queuebuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/ip64-addr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/psock.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/sicslowpan.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/simple-udp.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/tcp-socket.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/tcpip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/udp-socket.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6-nbr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6-route.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-icmp6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-nameserver.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-nd6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-packetqueue.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-sr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-udp-packet.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uipbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uiplib.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/anti-replay.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/ccm-star-packetbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/mac-sequence.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma-output.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma-security.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/frame802154.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/frame802154e-ie.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/framer-802154.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/nullframer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-dag-root.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-dag.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-ext-header.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-icmp6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-mrhof.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-nbr-policy.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-neighbor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-of0.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-timers.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/atomic.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/autostart.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/compower.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/ctimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/energest.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/etimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/log.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/mutex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/node-id.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/process-mutex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/process.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/rtimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/stimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/timer.c
+  CC        sink_node.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/contiki-main.c
+  LD        build/cooja/sink_node.cooja
+> make COOJA_VIB_SENSOR=0 COOJA_BEEP=0 COOJA_BUTTON=0 COOJA_PIR_SENSOR=0 COOJA_CFS=0 COOJA_EEPROM=0 -j1 temperature_sensor.cooja TARGET=cooja
+  MKDIR     build/cooja/obj/.deps
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/cooja_mt.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./rtimer-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/watchdog.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./int-master.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/beep.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/ip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/leds-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/moteid.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/pir-sensor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/rs232.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/vib-sensor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/clock.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/sys/cooja-log.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/cfs/cfs-cooja.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/cooja-radio.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/eeprom.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./slip-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./platform.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/./mtype.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/random.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sensors.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/leds.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/gpio-hal-arch.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/arch/platform/cooja/dev/buttons.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/button-hal.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/gpio-hal.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/nullradio.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/serial-line.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/dev/slip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/aes-128.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/assert.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/bitrev.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/cbor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ccm-star.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/circular-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/crc16.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/csprng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/dbl-circ-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/dbl-list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ecc-curve.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/heapmem.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/hexconv.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ifft.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/iq-seeder.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/list.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/memb.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ringbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/ringbufindex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sfc16-prng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sfc32-prng.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/sha-256.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/lib/trickle-timer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/link-stats.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/linkaddr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/nbr-table.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/net-debug.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/netstack.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/packetbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/queuebuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/ip64-addr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/psock.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/sicslowpan.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/simple-udp.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/tcp-socket.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/tcpip.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/udp-socket.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6-nbr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6-route.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-ds6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-icmp6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-nameserver.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-nd6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-packetqueue.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-sr.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip-udp-packet.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uip6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uipbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/ipv6/uiplib.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/anti-replay.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/ccm-star-packetbuf.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/mac-sequence.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma-output.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma-security.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/csma/csma.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/frame802154.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/frame802154e-ie.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/framer-802154.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/mac/framer/nullframer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-dag-root.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-dag.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-ext-header.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-icmp6.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-mrhof.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-nbr-policy.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-neighbor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-of0.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl-timers.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/net/routing/rpl-lite/rpl.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/atomic.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/autostart.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/compower.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/ctimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/energest.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/etimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/log.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/mutex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/node-id.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/process-mutex.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/process.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/rtimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/stimer.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/sys/timer.c
+  CC        temperature_sensor.c
+  CC        /Users/rishabhsinghparmar/contiki-ng/os/contiki-main.c
+  LD        build/cooja/temperature_sensor.cooja
+INFO  [main] [LogScriptEngine.java:246] - Script timeout in 60000 ms
+INFO  [sim] [LogScriptEngine.java:338] -  5% completed, 57.4 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 10% completed, 54.3 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 15% completed, 51.2 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 20% completed, 48.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 25% completed, 45.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 30% completed, 42.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 35% completed, 39.1 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 40% completed, 36.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 45% completed, 33.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 50% completed, 30.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 55% completed, 27.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 60% completed, 24.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 65% completed, 21.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 70% completed, 18.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 75% completed, 15.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 80% completed, 12.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 85% completed,  9.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 90% completed,  6.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:338] - 95% completed,  3.0 sec remaining
+INFO  [sim] [LogScriptEngine.java:312] - Timeout event @ 60000000
+INFO  [sim] [Simulation.java:450] - Runtime: 60089 ms. Simulated time: 60000 ms. Speedup: 0.9985188636855331
+INFO  [main] [Cooja.java:1173] - TEST OK
+

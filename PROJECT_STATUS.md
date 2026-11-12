@@ -51,3 +51,19 @@
 ## Remaining scope and limitations
 
 No required implementation phase remains. Physical sensor integration is an explicit adapter hook and has not been tested on a board. Temperatures are generated in simulated firmware; network behavior is executed by Cooja. Energy/lifetime use documented illustrative electrical assumptions. Results are single-seed observations, and the lossy stress experiment intentionally remains a failed network acceptance result. The local service has no authentication and binds to loopback by default; no cloud deployment was requested.
+
+## NS-3 integration — implemented and verified (12 November 2026)
+
+The original Cooja deliverable above remains intact. Added NS-3 3.46 LR-WPAN / SixLoWPAN / IPv6 / UDP with static BFS next-hop routes, exact 18-byte header, deterministic sensors, sink deduplication, application ACK/retry timers, actual forwarding/hop traces, JSONL and NetAnim XML. Both engines share the existing FastAPI/SQLite tables, metric service, React dashboard and CSV exports. No schema rewrite or Cooja parser change was needed.
+
+The same dashboard now provides engine selection, identifiable experiment history, NS-3 configuration/run/stop/progress/output, recorded packet topology, energy estimates and explicit Cooja/NS-3 comparison tables/graphs. The API uses bounded typed parameters and fixed executable arguments without a shell; concurrent jobs are rejected and cancellation has bounded termination.
+
+Verification: compiled C++ network and exact-byte header tests; all eight real NS-3 matrix processes completed; raw JSONL/metric/CSV/NetAnim checks passed; 15 Python tests passed (all original 8 retained). Additional no-route, full-discard, live cancellation, concurrency and idempotent REST replay checks passed. The twenty-sensor run received 1,127 unique packets with 5.506 average hops. The 30% UDP discard run received 548/563, with 444 retries and 80 ACK failures separately accounted. Original Cooja protocol and 5/10 baseline validators passed. All original 4 runs, 6,184 events and 887 readings matched the pre-integration SQLite backup exactly.
+
+The production frontend build passed; browser checks exercised Cooja/NS-3 history, comparison charts, live readings, launch/stop and themes. See the NS-3 experimental report and `ns3/results/verification/` for final evidence, including responsive and restart checks. Original Cooja experimental reports and baseline metrics were not rewritten.
+
+Runtime: `bash scripts/start_project.sh` on port 8001; `bash scripts/run_ns3_experiment.sh 5` or `10 --topology ladder`. Host runtimes are recorded in ignored `.runtime/*-path` files; details and fresh installation instructions are in `docs/ns3_environment.md` and `ns3/README.md`.
+
+Known limits: fixed 18-byte payload, fixed topology, static routing (not RPL), UDP discard injection (not PHY errors), estimated electrical energy, single-process local job manager, single-run descriptive comparisons. NetAnim XML generation/parsing passed; optional NetAnim GUI was not installed and GUI playback is not claimed. Failed development experiments remain labeled separately from accepted runs. One upstream Python deprecation and a nonfatal frontend bundle-size warning remain.
+
+Final continuation: a fresh unchanged Cooja simulation passed TEST OK and was ingested into the same backend (39/39 packets, 60 s). Cloud-offloaded generated compiler caches caused the first extra attempt to time out; the caches were preserved and rebuilt. Final tests also cover atomic execution-artifact handling and the post-process `ingesting` status. Verification records retain the interrupted attempt separately.

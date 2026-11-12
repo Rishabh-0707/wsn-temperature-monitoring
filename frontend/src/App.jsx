@@ -21,6 +21,7 @@ import {
   Zap,
 } from "lucide-react";
 import { get, query } from "./services/api";
+import SimulationControls from "./components/SimulationControls";
 import Topology from "./components/Topology";
 import TemperatureChart, { colors } from "./components/TemperatureChart";
 
@@ -62,6 +63,7 @@ export default function App() {
   const [theme, setTheme] = useState(
     () => localStorage.getItem("wsn-theme") || "dark",
   );
+  const [engine, setEngine] = useState("all");
   const [runs, setRuns] = useState([]),
     [runId, setRunId] = useState(""),
     [snapshot, setSnapshot] = useState(null),
@@ -83,7 +85,7 @@ export default function App() {
       try {
         const r = await get("/runs", controller.signal);
         setRuns(r);
-        if (!runId && r.length) setRunId(r[0].run_id);
+        if (!runId) {const first=r.find(item=>engine==='all'||item.source===engine);if(first)setRunId(first.run_id);}
         if (runId) {
           const [s, h] = await Promise.all([
             get(`/dashboard?${query(runId)}`, controller.signal),
@@ -109,7 +111,7 @@ export default function App() {
       controller.abort();
       clearTimeout(timer);
     };
-  }, [runId]);
+  }, [runId,engine]);
   const changeRun = (id) => {
     setRunId(id);
     setSnapshot(null);
@@ -174,11 +176,11 @@ export default function App() {
         <div className="sidebar-bottom">
           <div className="stack-note">
             <span className="dot" />
-            CONTIKI-NG + COOJA
+            COOJA + NS-3
             <div>
               IEEE 802.15.4 · 6LoWPAN
               <br />
-              IPv6 · UDP · RPL-Lite
+              IPv6 · UDP · two simulation engines
             </div>
           </div>
           <a className="nav-item" href="/docs" target="_blank" rel="noreferrer">
@@ -217,6 +219,7 @@ export default function App() {
           </div>
         </header>
         <main>
+          <SimulationControls runs={runs} run={run} statistics={s} onSelect={id=>{setEngine("ns3");changeRun(id);}} />
           <div className="page-heading">
             <div>
               <div className="eyebrow page-eyebrow">
@@ -238,7 +241,7 @@ export default function App() {
                     ? "Explore individual sensors, routing parents, and received samples."
                     : tab === "Performance"
                       ? "Application delivery, routing traffic, and transparent energy estimates."
-                      : "Reproducible Cooja observations with exportable measurement records."}
+                      : "Reproducible simulator observations with exportable measurement records."}
               </p>
             </div>
             <a
@@ -255,6 +258,8 @@ export default function App() {
               <span className="experiment-symbol">
                 <Server size={16} />
               </span>
+              <label htmlFor="engine">Simulator</label>
+              <select id="engine" aria-label="Select simulator" value={engine} onChange={e=>{const value=e.target.value;setEngine(value);const match=runs.find(r=>value==='all'||r.source===value);changeRun(match?.run_id||'');}}><option value="all">All engines</option><option value="cooja">Cooja / Contiki-NG</option><option value="ns3">NS-3</option></select>
               <label htmlFor="experiment">Experiment</label>
               <select
                 id="experiment"
@@ -263,18 +268,14 @@ export default function App() {
                 aria-label="Select experiment"
               >
                 {!runs.length && <option value="">No experiments yet</option>}
-                {runs.map((r) => (
+                {runs.filter(r=>engine==='all'||r.source===engine).map((r) => (
                   <option key={r.run_id} value={r.run_id}>
-                    {r.name}
+                    {r.name} · {r.status} · {r.run_id.slice(0,8)}
                   </option>
                 ))}
               </select>
               <span className="pill">
-                {run?.status === "completed"
-                  ? "COMPLETED"
-                  : run
-                    ? "RUNNING"
-                    : "AWAITING DATA"}
+                {run ? run.status.toUpperCase() : "AWAITING DATA"}
               </span>
             </div>
             <div className="experiment-meta">
@@ -305,7 +306,7 @@ export default function App() {
               </h2>
               <p>
                 {loaded && !runs.length
-                  ? "Run a Cooja experiment and import its log to see measured telemetry here."
+                  ? "Run an NS-3 experiment or import a Cooja log to see measured telemetry here."
                   : "Fetching sensor readings and network statistics."}
               </p>
               {loaded && !runs.length && (
@@ -425,9 +426,10 @@ export default function App() {
                       eyebrow="ROUTING TOPOLOGY"
                       title="Connected in the field"
                     >
-                      <span className="tiny-badge">MULTI-HOP</span>
+                      <span className="tiny-badge">{run.metadata.configuration?.topology === "star" ? "STAR" : "MULTI-HOP"}</span>
                     </PanelHeading>
                     <Topology
+                      events={snapshot.packet_events || []}
                       run={run}
                       nodes={nodes}
                       selected={selected}
@@ -474,7 +476,8 @@ export default function App() {
                           <th>Temperature</th>
                           <th>Received</th>
                           <th>Packet loss</th>
-                          <th>RPL parent</th>
+                          <th>Next-hop parent</th>
+                          {tab === "Sensor nodes" && <><th>Estimated energy (J)</th><th>Remaining energy (J)</th></>}
                           <th>Last receipt (mapped time)</th>
                         </tr>
                       </thead>
@@ -518,6 +521,7 @@ export default function App() {
                                   ? `Node ${String(n.parent_mote_id - 1).padStart(2, "0")}`
                                   : "—"}
                             </td>
+                            {tab === "Sensor nodes" && <><td>{number(n.energy_j, 3)}</td><td>{number(n.remaining_energy_j, 2)}</td></>}
                             <td className="muted mono">
                               {n.last_received
                                 ? new Date(n.last_received).toLocaleTimeString()
@@ -574,14 +578,14 @@ export default function App() {
                         "Routing control",
                         s.routing_control_packets,
                         "packets",
-                        "RPL output events",
+                        "Routing output events",
                       ],
                       [
                         Zap,
                         "Estimated energy",
                         s.estimated_energy_j,
                         "J",
-                        "Energest × assumed currents",
+                        run.source === "ns3" ? "PHY state time × assumed currents" : "Energest × assumed currents",
                       ],
                     ].map(([Icon, label, value, unit, detail]) => (
                       <div className="performance-item" key={label}>
@@ -612,6 +616,8 @@ export default function App() {
                         ["Unique packets sent", s.packets_sent],
                         ["Transmission attempts", s.transmission_attempts],
                         ["Retry attempts", s.retry_attempts],
+                        ["ACK failures", s.failed_ack_samples],
+                        ["Average observed hops", number(s.average_hop_count, 2)],
                         ["Received readings", s.packets_received],
                         ["Lost after transmission", s.packets_lost],
                         ["Samples without a route", s.no_route_samples],
@@ -637,8 +643,8 @@ export default function App() {
                     <div className="report-copy">
                       <p>
                         <strong>{s.metric_basis}</strong>. Temperatures are
-                        generated by the C firmware. Packet delivery and routing
-                        observations come from the Cooja network simulation.
+                        generated by the selected simulator application. Packet delivery and routing
+                        observations come from the selected network simulation.
                       </p>
                       <p>
                         Energy ({number(s.estimated_energy_j, 2)} J) and time to
@@ -653,13 +659,13 @@ export default function App() {
                         <strong>
                           {number(s.routing_overhead_per_data_packet, 2)}
                         </strong>{" "}
-                        RPL control output calls per unique application packet.
+                        Routing control output calls per unique application packet. Static route installation sends no routing control packets.
                         This excludes MAC retries and forwarded control frames.
                       </p>
                       <dl className="facts">
                         <div>
                           <dt>Random seed</dt>
-                          <dd>{run.metadata.seed ?? "—"}</dd>
+                          <dd>{run.metadata.seed ?? run.metadata.configuration?.seed ?? "—"}</dd>
                         </div>
                         <div>
                           <dt>Configured duration</dt>
@@ -726,13 +732,13 @@ export default function App() {
                   <Database size={12} />
                   Persisted in SQLite ·{" "}
                   {run.source === "cooja"
-                    ? "Cooja simulation"
+                    ? "Cooja simulation" : run?.source === "ns3" ? "NS-3 simulation"
                     : "Sensor ingestion"}
                 </span>
                 <span>
                   {run.status === "completed"
                     ? "Historical experiment · availability shown at simulation end"
-                    : "Receiving experiment telemetry"}
+                    : run.status === "running" ? "Receiving experiment telemetry" : `Experiment ${run.status}`}
                   <span className="footer-dot">●</span>
                 </span>
               </footer>

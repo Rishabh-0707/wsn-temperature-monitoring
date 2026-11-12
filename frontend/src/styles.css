@@ -1192,3 +1192,16 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.simulation-controls label { display: inline-flex; flex-direction: column; gap: 8px; margin: 8px 12px 12px 0; max-width: 100%; }
+.simulation-controls input[type="number"] { width: 100%; min-width: 0; padding: 10px; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+.simulation-controls select { max-width: 100%; }
+.simulation-controls pre { overflow-wrap: anywhere; }
+.simulation-controls progress { width: min(100%, 400px); accent-color: var(--accent); }
+
+@media (max-width: 700px) {
+ .experiment-name { flex-wrap: wrap; width: 100%; min-width: 0; gap: 8px; }
+ .experiment-name select { flex: 1 1 140px; min-width: 0; max-width: 100%; }
+ .experiment-name .pill { flex: 0 0 auto; }
+ .simulation-controls > span { display: block; margin: 12px 0 0 !important; }
+}

@@ -25,6 +25,16 @@ def run_public(row):
     result = dict(row)
     result["metadata"] = json.loads(result["metadata"])
     result["telemetry_complete"] = bool(result["telemetry_complete"])
+    result["simulator"] = result["metadata"].get("simulator", result["source"] if result["source"] in ("cooja", "ns3") else None)
+    return result
+
+def run_state(row, request):
+    result = run_public(row)
+    manager = getattr(request.app.state, "ns3_jobs", None)
+    job = manager.jobs.get(result["run_id"]) if manager else None
+    process = job.get("process") if job else None
+    if result["status"] == "running" and process is not None and process.poll() is not None:
+        result["status"] = "ingesting"
     return result
 
 def insert_reading(db, r):
@@ -39,7 +49,9 @@ def insert_reading(db, r):
 
 @router.post("/runs", status_code=201)
 def create_run(run: Run, request: Request):
-    meta = run.model_dump(mode="json")
+    meta = run.model_dump(mode="json", exclude_none=True)
+    if run.simulator is not None and run.simulator != run.source:
+        raise HTTPException(422, "Simulator must agree with experiment source")
     with db_for(request) as db:
         old = db.execute("SELECT * FROM runs WHERE run_id=?", (run.run_id,)).fetchone()
         if old:
@@ -54,7 +66,7 @@ def create_run(run: Run, request: Request):
 @router.get("/runs")
 def runs(request: Request):
     with db_for(request) as db:
-        return [run_public(r) for r in db.execute("SELECT * FROM runs ORDER BY started_at DESC")]
+        return [run_state(r, request) for r in db.execute("SELECT * FROM runs ORDER BY started_at DESC")]
 
 @router.post("/runs/{run_id}/complete")
 def complete(run_id: str, request: Request):
@@ -72,6 +84,8 @@ def ingest_events(run_id: str, events: Annotated[list[Event], Body(min_length=1,
         for event in events:
             if event.node_id > run["nodes"] or event.sim_time_us > run["duration_s"] * 1e6:
                 raise HTTPException(422, "Event outside configured node/time bounds")
+            if any(n > run["nodes"] for n in (event.path or []) + [n for n in (event.forwarding_node, event.next_hop) if n is not None]):
+                raise HTTPException(422, "Packet path exceeds configured nodes")
             payload = json.dumps(event.model_dump(exclude_none=True), sort_keys=True)
             old = db.execute("SELECT payload FROM events WHERE run_id=? AND event_id=?", (run_id, event.event_id)).fetchone()
             if old and old["payload"] != payload:
@@ -133,9 +147,11 @@ def snapshot(request, run_id=None):
     with db_for(request) as db:
         db.execute("BEGIN")
         run = resolve_run(db, run_id)
-        events = [json.loads(r[0]) for r in db.execute("SELECT payload FROM events WHERE run_id=?", (run["run_id"],))]
+        events = [json.loads(r[0]) for r in db.execute("SELECT payload FROM events WHERE run_id=? ORDER BY sim_time_us,rowid", (run["run_id"],))]
         rows = [dict(r) for r in db.execute("SELECT * FROM readings WHERE run_id=?", (run["run_id"],))]
-    return {"run": run_public(run), **summarize(run, events, rows)}
+    visible_run = run_state(run, request)
+    metrics = summarize(dict(run, status=visible_run["status"]), events, rows)
+    return {"run": visible_run, "packet_events": [e for e in events if e["type"] in ("tx", "rx", "forward")][-40:], **metrics}
 
 @router.get("/dashboard")
 def dashboard(request: Request, run_id: str | None = None):
@@ -164,3 +180,19 @@ def export(request: Request, run_id: str | None = None):
         writer.writerow([col[0] for col in rows.description])
         writer.writerows(rows)
     return Response(output.getvalue(), media_type="text/csv", headers={"Content-Disposition": 'attachment; filename="readings.csv"'})
+
+
+@router.get("/runs/{run_id}/events")
+def event_history(run_id: str, request: Request, offset: int = Query(0, ge=0), limit: int = Query(200, ge=1, le=1000)):
+    with db_for(request) as db:
+        resolve_run(db, run_id)
+        total = db.execute("SELECT COUNT(*) FROM events WHERE run_id=?", (run_id,)).fetchone()[0]
+        rows = db.execute("SELECT payload FROM events WHERE run_id=? ORDER BY sim_time_us,event_id LIMIT ? OFFSET ?", (run_id, limit, offset))
+        return {"items": [json.loads(r[0]) for r in rows], "total": total, "offset": offset, "limit": limit}
+
+@router.get("/comparison")
+def comparison(request: Request, cooja: str, ns3: str):
+    left, right = snapshot(request, cooja), snapshot(request, ns3)
+    if left["run"]["source"] != "cooja" or right["run"]["source"] != "ns3":
+        raise HTTPException(422, "Select one Cooja run and one NS-3 run")
+    return {"cooja": left, "ns3": right, "notice": "Different simulator, propagation, MAC, routing and energy models; this is a descriptive comparison, not a controlled equivalence claim."}

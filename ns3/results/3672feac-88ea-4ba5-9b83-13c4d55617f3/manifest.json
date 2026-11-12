@@ -1,0 +1,100 @@
+{
+  "run_id": "3672feac-88ea-4ba5-9b83-13c4d55617f3",
+  "name": "NS-3 \u00b7 10 sensors \u00b7 ladder",
+  "source": "ns3",
+  "simulator": "ns3",
+  "started_at": "2026-11-10T03:18:19.108632+00:00",
+  "duration_s": 300,
+  "nodes": 10,
+  "telemetry_complete": true,
+  "configuration": {
+    "nodes": 10,
+    "topology": "ladder",
+    "duration_s": 300,
+    "interval_s": 2.0,
+    "radio_range_m": 50.0,
+    "seed": 123456,
+    "payload_bytes": 18,
+    "radio_model": "RangePropagationLossModel",
+    "routing_mode": "static-ipv6-bfs",
+    "loss_probability": 0.0,
+    "temperature_min_c": 20.0,
+    "temperature_max_c": 35.0,
+    "ack_timeout_s": 1.0,
+    "max_attempts": 3,
+    "realtime": false
+  },
+  "topology": [
+    {
+      "node_id": 0,
+      "mote_id": 1,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "node_id": 1,
+      "mote_id": 2,
+      "x": 35,
+      "y": 0
+    },
+    {
+      "node_id": 2,
+      "mote_id": 3,
+      "x": 35,
+      "y": 25
+    },
+    {
+      "node_id": 3,
+      "mote_id": 4,
+      "x": 70,
+      "y": 0
+    },
+    {
+      "node_id": 4,
+      "mote_id": 5,
+      "x": 70,
+      "y": 25
+    },
+    {
+      "node_id": 5,
+      "mote_id": 6,
+      "x": 105,
+      "y": 0
+    },
+    {
+      "node_id": 6,
+      "mote_id": 7,
+      "x": 105,
+      "y": 25
+    },
+    {
+      "node_id": 7,
+      "mote_id": 8,
+      "x": 140,
+      "y": 0
+    },
+    {
+      "node_id": 8,
+      "mote_id": 9,
+      "x": 140,
+      "y": 25
+    },
+    {
+      "node_id": 9,
+      "mote_id": 10,
+      "x": 175,
+      "y": 0
+    },
+    {
+      "node_id": 10,
+      "mote_id": 11,
+      "x": 175,
+      "y": 25
+    }
+  ],
+  "radio_range_m": 50.0,
+  "simulator_version": "3.46",
+  "routing_protocol": "IPv6 static BFS routes (not RPL)",
+  "wireless_model": "LR-WPAN / SixLoWPAN / IPv6 / UDP; range propagation",
+  "managed_ns3": true
+}

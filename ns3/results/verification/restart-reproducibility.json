@@ -1,0 +1,18 @@
+{
+  "repeated_run": "8f468083-e64a-4789-9a4a-50127907569d",
+  "baseline_run": "24cfb921-31e7-43fe-b4ec-0ecea206672e",
+  "equal_metrics": [
+    "packets_sent",
+    "packets_received",
+    "retry_attempts",
+    "average_delay_ms",
+    "average_hop_count",
+    "estimated_energy_j",
+    "throughput_bps"
+  ],
+  "historical_matrix_loaded_after_restart": true,
+  "replay": {
+    "inserted": 0,
+    "completed": true
+  }
+}

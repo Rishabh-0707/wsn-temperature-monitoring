@@ -1,0 +1,82 @@
+[
+  {
+    "run_id": "24cfb921-31e7-43fe-b4ec-0ecea206672e",
+    "events": 1512,
+    "unique_tx": 282,
+    "unique_rx": 282,
+    "forwarding_events": 0,
+    "max_hops": 1,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 282
+  },
+  {
+    "run_id": "6d0cc334-5678-4259-946a-c5de36ea7e7f",
+    "events": 4083,
+    "unique_tx": 563,
+    "unique_rx": 563,
+    "forwarding_events": 1127,
+    "max_hops": 5,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 563
+  },
+  {
+    "run_id": "e900771e-63f6-416e-9617-193d20396a88",
+    "events": 10978,
+    "unique_tx": 1127,
+    "unique_rx": 1127,
+    "forwarding_events": 5107,
+    "max_hops": 10,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 1127
+  },
+  {
+    "run_id": "603bd8bb-a71d-4937-9c80-5f3ec224578c",
+    "events": 9116,
+    "unique_tx": 1401,
+    "unique_rx": 1401,
+    "forwarding_events": 2804,
+    "max_hops": 5,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 1401
+  },
+  {
+    "run_id": "8da16db0-38bd-472d-b90a-aab19a19f2d0",
+    "events": 2403,
+    "unique_tx": 283,
+    "unique_rx": 283,
+    "forwarding_events": 567,
+    "max_hops": 5,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 283
+  },
+  {
+    "run_id": "e953e5bb-05f0-4632-80ef-5d07e6185573",
+    "events": 7048,
+    "unique_tx": 563,
+    "unique_rx": 548,
+    "forwarding_events": 1992,
+    "max_hops": 5,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 548
+  },
+  {
+    "run_id": "67c0f3de-394c-4760-86db-cb1fa7c05962",
+    "events": 4377,
+    "unique_tx": 563,
+    "unique_rx": 563,
+    "forwarding_events": 1414,
+    "max_hops": 6,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 563
+  },
+  {
+    "run_id": "7731764c-c2ed-48da-b485-9435af12f341",
+    "events": 4101,
+    "unique_tx": 564,
+    "unique_rx": 564,
+    "forwarding_events": 1133,
+    "max_hops": 5,
+    "netanim_xml": "parsed; node and wireless packet records present",
+    "csv_rows": 564
+  }
+]

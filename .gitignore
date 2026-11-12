@@ -20,3 +20,7 @@ contiki/*/*.o
 !.env.example
 .codex/
 .agents/
+
+# Retain simulator console evidence alongside the published NS-3 recordings.
+!ns3/results/**/console.log
+!ns3/results/**/cooja-console.log

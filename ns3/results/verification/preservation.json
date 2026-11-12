@@ -1,0 +1,14 @@
+{
+  "runs": {
+    "original_rows": 4,
+    "unchanged": true
+  },
+  "events": {
+    "original_rows": 6184,
+    "unchanged": true
+  },
+  "readings": {
+    "original_rows": 887,
+    "unchanged": true
+  }
+}
